@@ -1,0 +1,1 @@
+## Slider animado responsive
