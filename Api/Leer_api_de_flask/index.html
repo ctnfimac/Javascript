@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="contenido"></div>
+
+    <script>
+
+        var contenido = document.querySelector('#contenido')
+        function traerPersonas(){
+            fetch('http://127.0.0.1:5000/persona')
+            .then( response => response.json())
+            .then(data =>{
+                console.log(data.personas[0].apellido)
+                
+            })
+        }
+
+        function traerPersona(codigo){
+            fetch('http://127.0.0.1:5000/personadata/'+codigo)
+            .then( response => response.json())
+            .then(data =>{
+                console.log(data.persona)
+            })
+        }
+
+        function agregarPersona(personaNueva){
+            fetch('http://127.0.0.1:5000/persona',{
+                method: 'POST',
+                body: JSON.stringify(personaNueva),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then( response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+        }
+
+        function eliminarPersona(codigo){
+            fetch('http://127.0.0.1:5000/personadelete/'+codigo,{
+                method: 'DELETE',
+            })
+            .then( response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Deleted:', response));
+        }
+
+
+        function modificarPersona(codigo, personaModificada){
+            fetch('http://127.0.0.1:5000/persona/'+codigo,{
+                method: 'PUT',
+                body: JSON.stringify(personaModificada),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then( response => response.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('updated:', response));
+        }
+
+        /*
+            var url = 'https://example.com/profile';
+            var data = {username: 'example'};
+
+            fetch(url, {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+                'Content-Type': 'application/json'
+            }
+            }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+        */
+
+        //traerPersonas()
+        //traerPersona(3)
+        /*persona1 = {
+            "codigo": '6',
+            "nombre": "terminator",
+            "apellido": "t-800",
+            "fecha_nacimiento": "2957-10-08"
+        }
+        agregarPersona(persona1)*/
+        //eliminarPersona(6)
+        
+        personaModificada = {
+            "nombre": "Yrma",
+            "apellido": "congona Peña",
+            "fecha_nacimiento": "1955-11-11"
+        }
+        modificarPersona(4,personaModificada)
+    
+        
+    </script>
+</body>
+</html>
