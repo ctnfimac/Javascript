@@ -5,101 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
     
-    <div id="contenido"></div>
 
-    <script>
+    <section class="api mt-5" id="api">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="d-md-flex justify-content-md-between border border-success pl-5 pr-5 pt-4">
+                        <div class="opcion">
+                            <button id="traerPersonas" class="btn btn-lg btn-success" type="submit">Traer Personas</button>
+                            <p class="text-left pt-3">Obtiene todos los valores de la tabla Persona en formato JSON</p>
+                        </div>
+                        <div id="rta_traerPersonas" class="table-responsive" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        var contenido = document.querySelector('#contenido')
-        function traerPersonas(){
-            fetch('http://127.0.0.1:5000/persona')
-            .then( response => response.json())
-            .then(data =>{
-                console.log(data.personas[0].apellido)
-                
-            })
-        }
-
-        function traerPersona(codigo){
-            fetch('http://127.0.0.1:5000/personadata/'+codigo)
-            .then( response => response.json())
-            .then(data =>{
-                console.log(data.persona)
-            })
-        }
-
-        function agregarPersona(personaNueva){
-            fetch('http://127.0.0.1:5000/persona',{
-                method: 'POST',
-                body: JSON.stringify(personaNueva),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then( response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
-        }
-
-        function eliminarPersona(codigo){
-            fetch('http://127.0.0.1:5000/personadelete/'+codigo,{
-                method: 'DELETE',
-            })
-            .then( response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Deleted:', response));
-        }
-
-
-        function modificarPersona(codigo, personaModificada){
-            fetch('http://127.0.0.1:5000/persona/'+codigo,{
-                method: 'PUT',
-                body: JSON.stringify(personaModificada),
-                headers:{
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then( response => response.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('updated:', response));
-        }
-
-        /*
-            var url = 'https://example.com/profile';
-            var data = {username: 'example'};
-
-            fetch(url, {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(data), // data can be `string` or {object}!
-            headers:{
-                'Content-Type': 'application/json'
-            }
-            }).then(res => res.json())
-            .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
-        */
-
-        //traerPersonas()
-        //traerPersona(3)
-        /*persona1 = {
-            "codigo": '6',
-            "nombre": "terminator",
-            "apellido": "t-800",
-            "fecha_nacimiento": "2957-10-08"
-        }
-        agregarPersona(persona1)*/
-        //eliminarPersona(6)
-        
-        personaModificada = {
-            "nombre": "Yrma",
-            "apellido": "congona Peña",
-            "fecha_nacimiento": "1955-11-11"
-        }
-        modificarPersona(4,personaModificada)
-    
-        
-    </script>
+    <script src="js/api.js"></script>
 </body>
 </html>
