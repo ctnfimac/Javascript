@@ -1,9 +1,12 @@
 var contenido = document.querySelector('#contenido')
 
 var btn_traerPersonas = document.getElementById('traerPersonas')
+var btn_traerPersona = document.getElementById('traerPersona')
 var rta_traerPersonas = document.getElementById('rta_traerPersonas')
+var rta_traerPersona = document.getElementById('rta_traerPersona')
 
 btn_traerPersonas.addEventListener('click', traerPersonas,true)
+btn_traerPersona.addEventListener('click', fn_traerPersona,true)
 
 function traerPersonas(){
     fetch('http://127.0.0.1:5000/persona')
@@ -20,6 +23,7 @@ function traerPersona(codigo){
     .then( response => response.json())
     .then(data =>{
         console.log(data.persona)
+        document.getElementById('rta_traerPersona').innerHTML = jsonTemplate(data.persona)
     })
 }
 
@@ -57,6 +61,16 @@ function modificarPersona(codigo, personaModificada){
     .then( response => response.json())
     .catch(error => console.error('Error:', error))
     .then(response => console.log('updated:', response));
+}
+
+function fn_traerPersona(){
+    codigo = document.getElementById('idTraerPersona').value;
+    if (codigo != null && codigo != '') 
+        traerPersona(codigo)
+    else 
+        document.getElementById('rta_traerPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+                +'<strong>Ingrese el código de la persona</strong>'
+                +'</div>'
 }
 
 function jsonTemplate(miobjeto){

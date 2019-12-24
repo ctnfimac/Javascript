@@ -11,15 +11,30 @@
     
 
     <section class="api mt-5" id="api">
-        <div class="container">
+        <div class="container-fuid p-2">
             <div class="row">
-                <div class="col-sm">
-                    <div class="d-md-flex justify-content-md-between border border-success pl-5 pr-5 pt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="d-lg-flex justify-content-md-between border border-success pl-5 pr-5 pt-4">
                         <div class="opcion">
-                            <button id="traerPersonas" class="btn btn-lg btn-success" type="submit">Traer Personas</button>
-                            <p class="text-left pt-3">Obtiene todos los valores de la tabla Persona en formato JSON</p>
+                            <button id="traerPersonas" class="btn btn-md btn-success" type="submit">Traer Personas</button>
+                            <p class="text-left pt-3">Obtiene toda la información de las personas guardadas</p>
                         </div>
                         <div id="rta_traerPersonas" class="table-responsive" ></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="d-lg-flex justify-content-md-between border border-success pl-5 pr-5 pt-4">
+                        <div class="opcion">
+                            <!--<button id="traerPersonas" class="btn btn-lg btn-success" type="submit">Traer Persona</button>-->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button id="traerPersona" class="btn btn-success" type="button">Traer Persona</button>
+                                </div>
+                                <input id="idTraerPersona" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            </div>  
+                            <p class="text-left pt-3">Obtiene una persona segun el código que se ingrese</p>
+                        </div>
+                        <div id="rta_traerPersona" class="table-responsive" ></div>
                     </div>
                 </div>
             </div>
