@@ -1,12 +1,4 @@
-var contenido = document.querySelector('#contenido')
 
-var btn_traerPersonas = document.getElementById('traerPersonas')
-var btn_traerPersona = document.getElementById('traerPersona')
-var rta_traerPersonas = document.getElementById('rta_traerPersonas')
-var rta_traerPersona = document.getElementById('rta_traerPersona')
-
-btn_traerPersonas.addEventListener('click', traerPersonas,true)
-btn_traerPersona.addEventListener('click', fn_traerPersona,true)
 
 function traerPersonas(){
     fetch('http://127.0.0.1:5000/persona')
@@ -16,6 +8,12 @@ function traerPersonas(){
         //rta_traerPersonas.innerHTML = data.personas
         rta_traerPersonas.innerHTML = jsonTemplate(data.personas)
     })
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición, ' + error.message);
+        document.getElementById('rta_traerPersonas').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+                +'<strong>Hubo un problema con la petición, ' + error.message +'</strong>'
+                +'</div>'
+    });
 }
 
 function traerPersona(codigo){
@@ -25,6 +23,12 @@ function traerPersona(codigo){
         console.log(data.persona)
         document.getElementById('rta_traerPersona').innerHTML = jsonTemplate(data.persona)
     })
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición, ' + error.message);
+        document.getElementById('rta_traerPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+                +'<strong>Hubo un problema con la petición, ' + error.message +'</strong>'
+                +'</div>'
+    });
 }
 
 function agregarPersona(personaNueva){
@@ -44,9 +48,19 @@ function eliminarPersona(codigo){
     fetch('http://127.0.0.1:5000/personadelete/'+codigo,{
         method: 'DELETE',
     })
-    .then( response => response.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Deleted:', response));
+    .then(data =>{
+        //console.log(data.personas[0].apellido)
+        //console.log(data)
+        document.getElementById('rta_EliminarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-warning">'
+                +'<strong>Persona Elimninada</strong>'
+                +'</div>';
+    })
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición, ' + error.message);
+        document.getElementById('rta_EliminarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+                +'<strong>Hubo un problema con la petición, ' + error.message +'</strong>'
+                +'</div>'
+    });
 }
 
 
@@ -62,48 +76,4 @@ function modificarPersona(codigo, personaModificada){
     .catch(error => console.error('Error:', error))
     .then(response => console.log('updated:', response));
 }
-
-function fn_traerPersona(){
-    codigo = document.getElementById('idTraerPersona').value;
-    if (codigo != null && codigo != '') 
-        traerPersona(codigo)
-    else 
-        document.getElementById('rta_traerPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
-                +'<strong>Ingrese el código de la persona</strong>'
-                +'</div>'
-}
-
-function jsonTemplate(miobjeto){
-    //console.log("tamanio: ",Object.keys(miobjeto).length)
-    //console.log(miobjeto)
-    tope = Object.keys(miobjeto).length
-    respuesta = ""
-    rta = '<table class="table table-dark">'
-    +'<thead>'
-       +'<tr>'
-        +'<th scope="col">codigo</th>'
-        +'<th scope="col">Nombre</th>'
-        +'<th scope="col">Apellido</th>'
-        +'<th scope="col">Nacimiento</th>'
-        +'</tr>'
-    +'</thead>'
-    +'<tbody>';
-    
-    for(i = 0; i < tope; i++){
-        fecha = new Date(miobjeto[i].fecha_nacimiento)
-        fecha_str = parseInt(fecha.getDay()+ 1) + '-'+ parseInt(fecha.getMonth()+ 1) + '-'+ parseInt(fecha.getFullYear()+ 1)
-        //console.log("codigo: ", miobjeto[i].codigo, ", nombre:" , miobjeto[i].nombre, ", apellido:" , miobjeto[i].apellido, "fecha_nacimiento:" , miobjeto[i].fecha_nacimiento )
-        respuesta += "codigo: " + miobjeto[i].codigo + ", nombre:" + miobjeto[i].nombre + ", apellido:" +  miobjeto[i].apellido + "fecha_nacimiento:"  + miobjeto[i].fecha_nacimiento
-        rta += '<tr>'
-        +'<th scope="row">'+miobjeto[i].codigo+'</th>'
-        +'<th scope="row">'+miobjeto[i].nombre+'</th>'
-        +'<td>'+miobjeto[i].apellido+'</td>'
-        +'<td>'+ fecha_str +'</td>'
-        +'</tr>';
-    }
-    rta += '</tbody>'
-        +'</table>';
-    return rta
-}
-
 
