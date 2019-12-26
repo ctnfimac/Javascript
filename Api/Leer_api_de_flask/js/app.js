@@ -6,12 +6,16 @@ var rta_traerPersonas = document.getElementById('rta_traerPersonas')
 var rta_traerPersona = document.getElementById('rta_traerPersona')
 var btn_eliminarPersona = document.getElementById('EliminarPersona')
 var btn_agregar = document.getElementById('agregar')
+var btn_modificar = document.getElementById('modificar')
+var btn_mostrar = document.getElementById('mostrar')
 
 btn_traerPersonas.addEventListener('click', traerPersonas,true)
 btn_traerPersona.addEventListener('click', fn_traerPersona,true)
 btn_eliminarPersona.addEventListener('click', fn_eliminarPersona,true)
 btn_agregar.addEventListener('click',fn_agregarPersona, true)
-
+btn_mostrar.addEventListener('click', fn_mostrar, true)
+btn_modificar.addEventListener('click', fn_modificarpersona, true)
+btn_modificar.style.display = "none"
 
 function fn_traerPersona(){
     codigo = document.getElementById('idTraerPersona').value;
@@ -57,6 +61,24 @@ function fn_agregarPersona(){
     }
 }
 
+function fn_mostrar(){
+    codigo = document.getElementById('idModificarPersona').value;
+    mostrarPersona(codigo)
+}
+
+function fn_modificarpersona(){
+    codigo = document.getElementById('upd_codigo').value;
+    nombre= document.getElementById('upd_nombre').value;
+    apellido = document.getElementById('upd_apellido').value;
+    nacimiento = document.getElementById('upd_nacimiento').value;
+    personaModificada = {
+        "nombre": nombre,
+        "apellido": apellido,
+        "fecha_nacimiento": nacimiento
+    }
+    modificarPersona(codigo,personaModificada)
+}
+
 function jsonTemplate(miobjeto){
     //console.log("tamanio: ",Object.keys(miobjeto).length)
     //console.log(miobjeto)
@@ -75,7 +97,7 @@ function jsonTemplate(miobjeto){
     
     for(i = 0; i < tope; i++){
         fecha = new Date(miobjeto[i].fecha_nacimiento)
-        fecha_str = parseInt(fecha.getDay()+ 1) + '-'+ parseInt(fecha.getMonth()+ 1) + '-'+ parseInt(fecha.getFullYear()+ 1)
+        fecha_str =  parseInt(fecha.getFullYear()+ 1) + '-'+ parseInt(fecha.getMonth()+ 1)  + '-' + parseInt(fecha.getDay()+ 1) 
         //console.log("codigo: ", miobjeto[i].codigo, ", nombre:" , miobjeto[i].nombre, ", apellido:" , miobjeto[i].apellido, "fecha_nacimiento:" , miobjeto[i].fecha_nacimiento )
         respuesta += "codigo: " + miobjeto[i].codigo + ", nombre:" + miobjeto[i].nombre + ", apellido:" +  miobjeto[i].apellido + "fecha_nacimiento:"  + miobjeto[i].fecha_nacimiento
         rta += '<tr>'

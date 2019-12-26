@@ -89,6 +89,45 @@
                         <div id="rta_agregarPersona" class="table-responsive" ></div>
                     </div>
                 </div>
+                <div class="col-md-6 mb-4">
+                    <div class=" justify-content-md-between border border-success pl-5 pr-5 pt-4">
+                        <div class="opcion">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button id="mostrar" class="btn btn-success" type="button">Ver Persona</button>
+                                </div>
+                                <input id="idModificarPersona" type="text" class="form-control"  placeholder="Codigo de la persona a modificar">
+                            </div>  
+                        </div>
+                        <form>
+                            <input type="hidden" class="form-control" id="upd_codigo">
+                            <div class="form-group row">
+                                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_nombre">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_apellido">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nacimiento" class="col-sm-2 col-form-label">Nacimiento</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_nacimiento">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button class="btn btn-primary" id="modificar">Modificar</button>
+                                </div>
+                            </div>
+                        <div id="rta_modificarPersona" class="table-responsive" ></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
