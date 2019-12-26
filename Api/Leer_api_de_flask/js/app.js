@@ -5,10 +5,12 @@ var btn_traerPersona = document.getElementById('traerPersona')
 var rta_traerPersonas = document.getElementById('rta_traerPersonas')
 var rta_traerPersona = document.getElementById('rta_traerPersona')
 var btn_eliminarPersona = document.getElementById('EliminarPersona')
+var btn_agregar = document.getElementById('agregar')
 
 btn_traerPersonas.addEventListener('click', traerPersonas,true)
 btn_traerPersona.addEventListener('click', fn_traerPersona,true)
 btn_eliminarPersona.addEventListener('click', fn_eliminarPersona,true)
+btn_agregar.addEventListener('click',fn_agregarPersona, true)
 
 
 function fn_traerPersona(){
@@ -29,6 +31,30 @@ function fn_eliminarPersona(){
         document.getElementById('rta_EliminarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
                 +'<strong>Ingrese el código de la persona</strong>'
                 +'</div>'
+}
+
+
+function fn_agregarPersona(){
+    codigo = document.getElementById('add_codigo').value;
+    nombre= document.getElementById('add_nombre').value;
+    apellido = document.getElementById('add_apellido').value;
+    nacimiento = document.getElementById('add_nacimiento').value;
+
+    if(codigo != '' && nombre != '' && apellido != '' && nacimiento != ''){
+        console.log('codigo:', codigo, ', nombre: ', nombre, ', apellido:', apellido,', nacimiento', nacimiento)
+        personaNueva = {
+            "codigo": codigo,
+            "nombre": nombre,
+            "apellido": apellido,
+            "fecha_nacimiento": nacimiento
+        }
+        agregarPersona(personaNueva)
+    }
+    else{
+        document.getElementById('rta_agregarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+        +'<strong>Complete todos los campos</strong>'
+        +'</div>'
+    }
 }
 
 function jsonTemplate(miobjeto){

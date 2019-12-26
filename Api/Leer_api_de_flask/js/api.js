@@ -40,7 +40,12 @@ function agregarPersona(personaNueva){
         }
     })
     .then( response => response.json())
-    .catch(error => console.error('Error:', error))
+    .catch(function(error) {
+        console.log('Hubo un problema con la petición, ' + error.message);
+        document.getElementById('rta_agregarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'
+                +'<strong>Hubo un problema con la petición, o con el código ingresado</strong>'
+                +'</div>'
+    })
     .then(response => console.log('Success:', response));
 }
 
