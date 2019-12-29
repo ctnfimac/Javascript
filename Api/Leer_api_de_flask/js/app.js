@@ -9,14 +9,16 @@ var btn_agregar = document.getElementById('agregar')
 var btn_modificar = document.getElementById('modificar')
 var btn_mostrar = document.getElementById('mostrar')
 
-btn_traerPersonas.addEventListener('click', traerPersonas,true)
-btn_traerPersona.addEventListener('click', fn_traerPersona,true)
-btn_eliminarPersona.addEventListener('click', fn_eliminarPersona,true)
-btn_agregar.addEventListener('click',fn_agregarPersona, true)
-btn_mostrar.addEventListener('click', fn_mostrar, true)
-btn_modificar.addEventListener('click', fn_modificarpersona, true)
-btn_modificar.style.display = "none"
-
+//estos if los agregue por que separe cada funcionalidad en htmls distintos
+if(btn_traerPersonas != null )btn_traerPersonas.addEventListener('click', traerPersonas,true)
+if(btn_traerPersona != null )btn_traerPersona.addEventListener('click', fn_traerPersona,true)
+if(btn_eliminarPersona != null )btn_eliminarPersona.addEventListener('click', fn_eliminarPersona,true)
+if(btn_agregar != null )btn_agregar.addEventListener('click',fn_agregarPersona, true)
+if(btn_mostrar != null )btn_mostrar.addEventListener('click', fn_mostrar, true)
+if(btn_modificar != null ){
+    btn_modificar.addEventListener('click', fn_modificarpersona, true)
+    btn_modificar.style.display = "none"
+}
 function fn_traerPersona(){
     codigo = document.getElementById('idTraerPersona').value;
     if (codigo != null && codigo != '') 
@@ -53,6 +55,9 @@ function fn_agregarPersona(){
             "fecha_nacimiento": nacimiento
         }
         agregarPersona(personaNueva)
+        document.getElementById('rta_agregarPersona').innerHTML ='<div class="col-8 ml-2 alert alert-dismissible alert-success">'
+                                +'<strong>Se agrego la persona correctamente</strong>'
+                                +'</div>'
     }
     else{
         document.getElementById('rta_agregarPersona').innerHTML = '<div class="ml-2 alert alert-dismissible alert-danger">'

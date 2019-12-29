@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-
+    
     <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">API</a>
         <form class="form-inline my-2 my-lg-0">
@@ -23,14 +23,19 @@
     <section class="api mt-5" id="api">
         <div class="container p-2">
             <div class="row">
-                <h3 class="mb-4 col-sm-12">Traer Registros de la tabla Personas</h3>
+                <h3 class="mb-4 col-sm-12">Eliminar un Registro de la tabla Personas</h3>
                 <div class="mb-4 bg-dark col-sm-12">
                     <div class="d-lg-flex justify-content-md-between pl-5 pr-5 pt-4">
                         <div class="opcion">
-                            <button id="traerPersonas" class="btn btn-md btn-success" type="submit">Petición</button>
-                            <p class="text-left pt-3 text-white">Obtiene toda la información de las personas guardadas</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button id="EliminarPersona" class="btn btn-success" type="button">Eliminar Persona</button>
+                                </div>
+                                <input id="idEliminarPersona" type="text" class="form-control"  placeholder="Codigo">
+                            </div>  
+                            <p class="text-left pt-3 text-white">Elimina la persona que tenga el codigo ingresado</p>
                         </div>
-                        <div id="rta_traerPersonas" class="table-responsive" ></div>
+                        <div id="rta_EliminarPersona" class="table-responsive ml-2" ></div>
                     </div>
                 </div>
             </div>

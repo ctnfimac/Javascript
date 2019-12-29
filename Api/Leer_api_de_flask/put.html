@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">API</a>
+        <form class="form-inline my-2 my-lg-0">
+            <a href="index.html" class="btn my-2 my-sm-0 ml-1 text-white">GET (all)</a>
+            <a href="post.html" class="btn my-2 my-sm-0 ml-1 text-white">POST</a>
+            <a href="delete.html" class="btn my-2 my-sm-0 ml-1 text-white">DELETE</a>
+            <a href="put.html" class="btn my-2 my-sm-0 ml-1 text-white">PUT</a>
+            <a href="get.html" class="btn my-2 my-sm-0 ml-1 text-white">GET (one)</a>
+        </form>
+      </nav>
+
+    <section class="api mt-5" id="api">
+        <div class="container p-2">
+            <div class="row">
+                <h3 class="mb-4 col-sm-12">Modificar un Registro de la tabla Personas</h3>
+                <div class="mb-4 bg-dark col-sm-12">
+                    <div class=" justify-content-md-between pl-5 pr-5 pt-4">
+                        <div class="opcion">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <button id="mostrar" class="btn btn-success" type="button">Ver Persona</button>
+                                </div>
+                                <input id="idModificarPersona" type="text" class="form-control col-4"  placeholder="Codigo de la persona a modificar">
+                            </div>  
+                        </div>
+                        <form>
+                            <input type="hidden" class="form-control" id="upd_codigo">
+                            <div class="form-group row">
+                                <label for="nombre" class="col-sm-2 col-form-label text-white">Nombre</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_nombre">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="apellido" class="col-sm-2 col-form-label text-white">Apellido</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_apellido">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nacimiento" class="col-sm-2 col-form-label text-white">Nacimiento</label>
+                                <div class="col-sm-6">
+                                <input type="text" class="form-control" id="upd_nacimiento">
+                                </div>
+                            </div>
+                        </form>
+                        <div class="form-group row">
+                                <div class="col-sm-10">
+                                    <button class="btn btn-primary" id="modificar">Modificar</button>
+                                </div>
+                            </div>
+                        <div id="rta_modificarPersona" class="table-responsive" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
