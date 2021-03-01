@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Biblioteca</h1>
+    <main>
+        <section class="libros">
+            <h2>Libros disponibles</h2>
+            <div class="container">
+                <div class="disponibilidad">
+                    <div class="libros_lista" id="libros_lista"></div>
+                    <div class="libros_cantidad" id="libros_cantidad"></div>    
+                </div>
+                <div class="acciones">
+                    <form action="">
+                        <p>
+                            <label for="titulo">Titulo:</label>
+                            <input type="text" id="titulo" class="titulo" name="titulo" placeholder="titulo">
+                        </p>
+                        <p>
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" id="isbn" class="isbn" name="isbn" placeholder="ISBN">
+                        </p>
+                        <input type="button" value="Devolver Libro" name="devolver" id="devolver">
+                        <input type="button" value="Tomar Libro" name="tomar" id="tomar">
+                    </form>
+                </div>
+            </div>
+        
+        </section>        
+    </main>
+    <script src="./js/index.js"></script>
+</body>
+</html>
