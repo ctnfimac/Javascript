@@ -97,17 +97,45 @@ function filtrarPorEdad(){
 function promedioDeEdades(){
 	reset();
 	let edades = alumnos.map(alumnos => alumnos.edad);
-	let suma = edades.reduce((a,b)=> a + b );
+	let promedio = edades.reduce( (a,b,i,arr) => { 
+		return ( i < arr.length - 1) 
+			   ? (a + b) 
+			   : (a + b) / arr.length
+	}) 
 	
 	let item = document.createElement('li');
 	item.classList.add('lista__item');
-	item.textContent = `promedio: ${suma/edades.length}`;
+	item.textContent = `promedio: ${promedio}`;
 	lista_resultado.appendChild(item);
-
 	
 	resultado.appendChild(lista_resultado);
 }
 
+
+
+
+/**
+ * averiguo cual es la persona con mayor edad 
+ */
+
+function personaMayor(){
+	reset();
+	let persona = alumnos.reduce( (anterior,posterior,i,arr) => {
+		return (anterior.edad > posterior.edad) ? anterior : posterior ;
+	});
+
+	let item = document.createElement('li');
+	item.classList.add('lista__item');
+	item.textContent = `El/La alumn@ mayor es ${persona.nombre} con ${persona.edad} años de edad`;
+	lista_resultado.appendChild(item);
+	
+	resultado.appendChild(lista_resultado);
+
+	console.log(persona)
+}
+
+
+// limpia la respuesta
 let reset = function() {
 	lista_resultado.innerHTML = ""; 
 }
