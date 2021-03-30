@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<lin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Arduino con johnny-five</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<body class="bg-dark">
+    <section class="handler">
+        <div class="vh-100 container d-flex justify-content-center mt-5 ">
+            <div class="card  mb-3 align-self-center" style="width: 18rem;"> 
+                <div class="card-header text-primary">Arduino + JohnnyFive</div>
+                  <div class="card-body">
+                  <p class="card-text">Haga click en uno de los botones para apagar o encender el Led</p>                  
+                  <div class="btn-group d-flex justify-content-center">
+                      <button id="led_13" class="btn btn-warning">Endender</button>
+                      <button id="led_13_off" class="btn btn-dark">Apagar</button>
+                  </div>
+                </div>
+              </div>
+           
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
